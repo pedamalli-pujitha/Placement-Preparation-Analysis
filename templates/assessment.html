@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Python Assessment</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f8fc;
+        }
+
+        .header {
+            background: #12395b;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .container {
+            width: 600px;
+            margin: 50px auto;
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #12395b;
+        }
+
+        .question {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 25px 0;
+        }
+
+        .option {
+            display: block;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .option:hover {
+            background: #f0f6fb;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 14px;
+            background: #12395b;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1769aa;
+        }
+
+        .progress {
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+    <h1>🐍 Python Skill Assessment</h1>
+
+</div>
+
+
+<div class="container">
+
+    <div class="progress">
+
+        Question {{ question_number }}
+        of
+        {{ total_questions }}
+
+    </div>
+
+
+    <div class="question">
+
+        {{ question.question }}
+
+    </div>
+
+
+    <form method="POST">
+
+        {% for option in question.options %}
+
+        <label class="option">
+
+            <input
+                type="radio"
+                name="answer"
+                value="{{ option }}"
+                required
+            >
+
+            {{ option }}
+
+        </label>
+
+        {% endfor %}
+
+
+        <button type="submit">
+
+            Next →
+
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+
+</html>

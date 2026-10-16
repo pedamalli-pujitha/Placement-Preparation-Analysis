@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Final Placement Dashboard</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f7fb;
+            color: #1e293b;
+        }
+
+        /* HEADER */
+
+        .header {
+            background: #1565c0;
+            color: white;
+            padding: 25px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 25px;
+        }
+
+        .header p {
+            margin-top: 6px;
+            opacity: 0.9;
+        }
+
+        /* MAIN */
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 30px auto;
+        }
+
+        /* STUDENT CARD */
+
+        .student-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-bottom: 25px;
+        }
+
+        .student-card h2 {
+            color: #1565c0;
+            margin-bottom: 20px;
+        }
+
+        .student-info {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .info-box {
+            background: #f1f6ff;
+            padding: 18px;
+            border-radius: 10px;
+        }
+
+        .info-box span {
+            display: block;
+            font-size: 13px;
+            color: #64748b;
+            margin-bottom: 6px;
+        }
+
+        .info-box strong {
+            font-size: 16px;
+        }
+
+        /* SCORE CARDS */
+
+        .score-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+
+        .score-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .score-card h2 {
+            margin-bottom: 15px;
+        }
+
+        .python {
+            color: #1565c0;
+        }
+
+        .aptitude {
+            color: #1976d2;
+        }
+
+        .score {
+            font-size: 42px;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background: #e2e8f0;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: #1565c0;
+            border-radius: 20px;
+        }
+
+        .completed {
+            margin-top: 10px;
+            color: #16a34a;
+            font-weight: bold;
+        }
+
+        /* PERFORMANCE */
+
+        .performance {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-bottom: 25px;
+        }
+
+        .performance h2 {
+            color: #1565c0;
+            margin-bottom: 20px;
+        }
+
+        .performance-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .performance-box {
+            padding: 22px;
+            background: #f8fafc;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .performance-box .icon {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .performance-box h3 {
+            font-size: 14px;
+            color: #64748b;
+            margin-bottom: 8px;
+        }
+
+        .performance-box p {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* PREPARATION PLAN */
+
+        .plan {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-bottom: 25px;
+        }
+
+        .plan h2 {
+            color: #1565c0;
+            margin-bottom: 20px;
+        }
+
+        .topic {
+            background: #f1f6ff;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        /* BUTTONS */
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .buttons a {
+            text-decoration: none;
+            background: #1565c0;
+            color: white;
+            padding: 12px 18px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .buttons a:hover {
+            background: #0d47a1;
+            transform: translateY(-2px);
+        }
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 800px) {
+
+            .student-info {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .performance-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .score-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .header {
+                padding: 20px;
+            }
+
+            .container {
+                width: 94%;
+            }
+
+            .student-info,
+            .performance-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 20px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<div class="header">
+
+    <div>
+        <h1>🎓 Smart Placement Preparation Platform</h1>
+        <p>Final Placement Dashboard</p>
+    </div>
+
+    <div>
+        👋 Welcome, <strong>{{ name }}</strong>
+    </div>
+
+</div>
+
+
+<div class="container">
+
+
+    <!-- STUDENT INFORMATION -->
+
+    <div class="student-card">
+
+        <h2>👤 Student Information</h2>
+
+        <div class="student-info">
+
+            <div class="info-box">
+                <span>Name</span>
+                <strong>{{ name }}</strong>
+            </div>
+
+            <div class="info-box">
+                <span>Email</span>
+                <strong>{{ email }}</strong>
+            </div>
+
+            <div class="info-box">
+                <span>College</span>
+                <strong>{{ college }}</strong>
+            </div>
+
+            <div class="info-box">
+                <span>Branch</span>
+                <strong>{{ branch }}</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ASSESSMENT SCORES -->
+
+    <div class="score-grid">
+
+
+        <!-- PYTHON -->
+
+        <div class="score-card">
+
+            <h2 class="python">🐍 Python Assessment</h2>
+
+            <div class="score">
+                {{ python_score }}%
+            </div>
+            <div class="progress-bar">
+    <progress
+        class="score-progress"
+        value="{{ python_score }}"
+        max="100">
+    </progress>
+</div>
+            <p class="completed">
+                ✓ Assessment Completed
+            </p>
+
+        </div>
+
+
+        <!-- APTITUDE -->
+
+        <div class="score-card">
+
+            <h2 class="aptitude">🧠 Aptitude Assessment</h2>
+
+            <div class="score">
+                {{ aptitude_score }}%
+            </div>
+
+            <div class="progress-bar">
+    <progress
+        class="score-progress"
+        value="{{ aptitude_score }}"
+        max="100">
+    </progress>
+</div>
+
+            <p class="completed">
+                ✓ Assessment Completed
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- PERFORMANCE -->
+
+    <div class="performance">
+
+        <h2>📊 Performance Analysis</h2>
+
+        <div class="performance-grid">
+
+
+            <div class="performance-box">
+
+                <div class="icon">⭐</div>
+
+                <h3>Overall Score</h3>
+
+                <p>{{ overall_score }}%</p>
+
+            </div>
+
+
+            <div class="performance-box">
+
+                <div class="icon">💪</div>
+
+                <h3>Strong Area</h3>
+
+                <p>{{ strong_area }}</p>
+
+            </div>
+
+
+            <div class="performance-box">
+
+                <div class="icon">📚</div>
+
+                <h3>Weak Area</h3>
+
+                <p>{{ weak_area }}</p>
+
+            </div>
+
+
+            <div class="performance-box">
+
+                <div class="icon">🎯</div>
+
+                <h3>Recommended Role</h3>
+
+                <p>{{ job_role }}</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- PREPARATION PLAN -->
+
+    <div class="plan">
+
+        <h2>📝 Personalized Preparation Plan</h2>
+
+        {% for topic in topics %}
+
+            <div class="topic">
+                📌 {{ topic }}
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+
+    <!-- NAVIGATION -->
+
+    <div class="buttons">
+
+        <a href="{{ url_for('dashboard') }}">
+            🏠 Dashboard
+        </a>
+
+        <a href="{{ url_for('skill_analysis') }}">
+            📊 Skill Analysis
+        </a>
+
+        <a href="{{ url_for('preparation_plan') }}">
+            📝 Preparation Plan
+        </a>
+
+        <a href="{{ url_for('progress') }}">
+            📈 Progress
+        </a>
+
+        <a href="{{ url_for('profile') }}">
+            👤 Profile
+        </a>
+
+        <a href="{{ url_for('logout') }}">
+            🚪 Logout
+        </a>
+
+    </div>
+
+
+</div>
+
+
+<footer>
+
+    Smart Placement Preparation Platform © 2026
+
+</footer>
+
+</body>
+</html>

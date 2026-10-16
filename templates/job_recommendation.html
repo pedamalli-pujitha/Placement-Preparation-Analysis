@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Job Role Recommendation</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f8ff;
+            margin: 0;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1e4fa3;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            margin-top: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .role {
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+            color: #1e4fa3;
+            margin: 20px 0;
+        }
+
+        .scores {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            text-align: center;
+        }
+
+        .score {
+            font-size: 28px;
+            font-weight: bold;
+            color: #1e4fa3;
+        }
+
+        li {
+            margin: 12px 0;
+            font-size: 16px;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 20px;
+            background: #1e4fa3;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Job Role Recommendation</h1>
+
+    <div class="card">
+
+        <h2>Your Assessment Scores</h2>
+
+        <div class="scores">
+
+            <div>
+                <p> Python</p>
+
+                <div class="score">
+                    {{ python_score }}%
+                </div>
+            </div>
+
+            <div>
+                <p>Aptitude</p>
+
+                <div class="score">
+                    {{ aptitude_score }}%
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>Recommended Job Role</h2>
+
+        <div class="role">
+            {{ job_role }}
+        </div>
+
+        <p>
+            {{ reason }}
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2> Skills to Develop</h2>
+
+        <ul>
+
+            {% for skill in skills %}
+
+                <li>{{ skill }}</li>
+
+            {% endfor %}
+
+        </ul>
+
+    </div>
+
+
+    <a href="{{ url_for('dashboard') }}" class="back">
+        ← Back to Dashboard
+    </a>
+
+</div>
+
+</body>
+
+</html>

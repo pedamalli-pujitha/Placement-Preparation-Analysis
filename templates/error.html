@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Error - Smart Placement</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            margin: 0;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 100px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            color: #1565c0;
+            font-size: 50px;
+        }
+
+        h2 {
+            color: #1e293b;
+        }
+
+        p {
+            color: #64748b;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 20px;
+            background: #1565c0;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>⚠️</h1>
+
+    <h2>Something went wrong</h2>
+
+    <p>
+        We couldn't process your request.
+        Please try again.
+    </p>
+
+    <a href="{{ url_for('dashboard') }}"
+       class="button">
+        ← Back to Dashboard
+    </a>
+
+</div>
+
+</body>
+
+</html>

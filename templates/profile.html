@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Student Profile</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f8ff;
+            margin: 0;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1e3a8a;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .profile-icon {
+            text-align: center;
+            font-size: 70px;
+        }
+
+        .detail {
+            padding: 12px;
+            margin: 10px 0;
+            background: #f8fafc;
+            border-radius: 8px;
+        }
+
+        .label {
+            font-weight: bold;
+            color: #1e3a8a;
+        }
+
+        .score {
+            font-size: 22px;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        .role {
+            text-align: center;
+            font-size: 26px;
+            font-weight: bold;
+            color: #2563eb;
+            padding: 20px;
+        }
+
+        .button {
+            display: inline-block;
+            text-decoration: none;
+            background: #2563eb;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            margin: 8px;
+        }
+
+        .button:hover {
+            background: #1d4ed8;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <h1>👤 Student Profile</h1>
+
+
+    <!-- PROFILE DETAILS -->
+
+    <div class="card">
+
+        <div class="profile-icon">
+            👨‍🎓
+        </div>
+
+        <div class="detail">
+            <span class="label">Name:</span>
+            {{ name }}
+        </div>
+
+        <div class="detail">
+            <span class="label">Email:</span>
+            {{ email }}
+        </div>
+
+        <div class="detail">
+            <span class="label">College:</span>
+            {{ college }}
+        </div>
+
+        <div class="detail">
+            <span class="label">Branch:</span>
+            {{ branch }}
+        </div>
+
+    </div>
+
+
+    <!-- ASSESSMENT SCORES -->
+
+    <div class="card">
+
+        <h2>📊 Assessment Scores</h2>
+
+        <div class="detail">
+            <span class="label">Python:</span>
+
+            {% if python_score is not none %}
+                <span class="score">
+                    {{ python_score }}%
+                </span>
+            {% else %}
+                Not Completed
+            {% endif %}
+
+        </div>
+
+
+        <div class="detail">
+
+            <span class="label">Aptitude:</span>
+
+            {% if aptitude_score is not none %}
+                <span class="score">
+                    {{ aptitude_score }}%
+                </span>
+            {% else %}
+                Not Completed
+            {% endif %}
+
+        </div>
+
+
+        <div class="detail">
+
+            <span class="label">Overall Score:</span>
+
+            {% if overall_score is not none %}
+                <span class="score">
+                    {{ overall_score }}%
+                </span>
+            {% else %}
+                Not Available
+            {% endif %}
+
+        </div>
+
+    </div>
+
+
+    <!-- JOB ROLE -->
+
+    <div class="card">
+
+        <h2>🎯 Recommended Job Role</h2>
+
+        <div class="role">
+            {{ job_role }}
+        </div>
+
+    </div>
+
+
+    <!-- BUTTONS -->
+
+    <div class="card center">
+
+        <a class="button"
+           href="{{ url_for('dashboard') }}">
+            🏠 Dashboard
+        </a>
+
+        <a class="button"
+           href="{{ url_for('skill_analysis') }}">
+            📊 Skill Analysis
+        </a>
+
+        <a class="button"
+           href="{{ url_for('progress') }}">
+            📈 My Progress
+        </a>
+
+    </div>
+
+
+</div>
+
+</body>
+
+</html>

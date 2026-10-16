@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Assessment Result</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f8fc;
+            text-align: center;
+        }
+
+        .box {
+            width: 500px;
+            margin: 100px auto;
+            background: white;
+            padding: 45px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #12395b;
+        }
+
+        .score {
+            font-size: 50px;
+            font-weight: bold;
+            color: #1769aa;
+            margin: 25px;
+        }
+
+        .message {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        a {
+            display: inline-block;
+            background: #12395b;
+            color: white;
+            text-decoration: none;
+            padding: 14px 25px;
+            border-radius: 8px;
+        }
+
+        a:hover {
+            background: #1769aa;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+    <h1>Python Assessment Result </h1>
+
+    <div class="score">
+        {{ percentage }}%
+    </div>
+
+    <div class="message">
+
+        You scored <b>{{ correct }}</b>
+        out of <b>{{ total }}</b>.
+
+    </div>
+
+
+    {% if percentage >= 80 %}
+
+        <p>Excellent! </p>
+
+    {% elif percentage >= 60 %}
+
+        <p>Good performance! </p>
+
+    {% elif percentage >= 40 %}
+
+        <p>Keep practicing! </p>
+
+    {% else %}
+
+        <p>You need more preparation. </p>
+
+    {% endif %}
+
+
+    <br><br>
+
+    <a href="{{ url_for('dashboard') }}">
+        Back to Dashboard
+    </a>
+
+</div>
+
+</body>
+
+</html>

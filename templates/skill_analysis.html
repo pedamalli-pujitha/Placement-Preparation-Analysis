@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Skill Analysis</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f8ff;
+            margin: 0;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        h1 {
+            color: #1e4fa3;
+            text-align: center;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .score {
+            font-size: 32px;
+            font-weight: bold;
+            color: #1e4fa3;
+            margin: 10px;
+        }
+
+        .level {
+            font-weight: bold;
+        }
+
+        .section {
+            background: white;
+            margin-top: 25px;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 25px;
+            text-decoration: none;
+            background: #1e4fa3;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Skill Analysis</h1>
+
+    <p class="subtitle">
+        Analyze your placement preparation performance
+    </p>
+
+    <!-- SCORE CARDS -->
+
+    <div class="cards">
+
+        <div class="card">
+
+            <h2>Python</h2>
+
+            <div class="score">
+                {{ python_score }}%
+            </div>
+
+            <div class="level">
+                {{ python_level }}
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>Aptitude</h2>
+
+            <div class="score">
+                {{ aptitude_score }}%
+            </div>
+
+            <div class="level">
+                {{ aptitude_level }}
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>Overall</h2>
+
+            <div class="score">
+                {{ overall_score }}%
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- STRONG SKILLS -->
+
+    <div class="section">
+
+        <h2> Strong Skills</h2>
+
+        {% if strong_skills %}
+
+            <ul>
+
+                {% for skill in strong_skills %}
+
+                    <li>✅ {{ skill }}</li>
+
+                {% endfor %}
+
+            </ul>
+
+        {% else %}
+
+            <p>No strong skills identified yet.</p>
+
+        {% endif %}
+
+    </div>
+
+
+    <!-- WEAK SKILLS -->
+
+    <div class="section">
+
+        <h2>Skills to Improve</h2>
+
+        {% if weak_skills %}
+
+            <ul>
+
+                {% for skill in weak_skills %}
+
+                    <li>📌 {{ skill }}</li>
+
+                {% endfor %}
+
+            </ul>
+
+        {% else %}
+
+            <p>🎉 No major improvement areas identified.</p>
+
+        {% endif %}
+
+    </div>
+
+
+    <a href="{{ url_for('dashboard') }}" class="back">
+        ← Back to Dashboard
+    </a>
+
+</div>
+
+</body>
+
+</html>
